@@ -1,5 +1,5 @@
 #include "regDefs.h"
-#include <SPIv1.h>
+#include "SPIv1.h"
 
 REG_TYPE RegSettings[MAX_REG] =
 {

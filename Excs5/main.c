@@ -1,5 +1,5 @@
 #include "regDefs.h"
-#include <SPIv1.h>
+#include "SPIv1.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
