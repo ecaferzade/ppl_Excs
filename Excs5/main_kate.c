@@ -35,9 +35,9 @@ void setFrequency(int rfFreq){
         a[i]=n%2;    
         n=n/2;
     } 
-    printf("\nBinary of Given Number is=");    
+    printf("\nBinary of Given Number is = ");    
     for(i=i-1;i>=0;i--){    
-        printf("%d",a[i]);
+        printf("%d\n",a[i]);
     } 
     int j =0;
     for(int k=7; k>=0; k--){
@@ -74,13 +74,13 @@ void setFrequency(int rfFreq){
     cc1200_reg_write(adr0, result0);
     cc1200_reg_write(adr1, result1);
     cc1200_reg_write(adr2, result2);
-    printf("Reading the set frequency...");
+    printf("Reading the set frequency...\n");
     cc1200_reg_read(adr0, &val0);
     cc1200_reg_read(adr1, &val1);
     cc1200_reg_read(adr2, &val2);
-    printf("The value saved in freq0 is: %d", val0);
-    printf("The value saved in freq1 is: %d", val1);
-    printf("The value saved in freq2 is: %d", val2);
+    printf("The value saved in freq0 is: %d\n", val0);
+    printf("The value saved in freq1 is: %d\n", val1);
+    printf("The value saved in freq2 is: %d\n", val2);
 }
 
 
