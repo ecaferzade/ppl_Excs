@@ -46,9 +46,9 @@ void setFrequency(int rfFreq){
         a[i]=n%2;    
         n=n/2;
     } 
-    printf("\nBinary of Given Number is = ");    
+    printf("Binary of Given Number is = ");    
     for(i=i-1;i>=0;i--){    
-        printf("%d\n",a[i]);
+        printf("%d",a[i]);
     } 
     int j =0;
     for(int k=7; k>=0; k--){
@@ -103,15 +103,11 @@ int main(int argc, char *argv[]){
         printf("ERROR: Initialization failed\n");
         return -1;
     }
-    printf("checkpoint 0\n");
     cc1200_cmd(SRES);  // reset CC1200
-    printf("checkpoint 1\n");
     sleep(1);
     writeAllRegisters();  //write the register according to the desired mode
-    printf("checkpoint 2\n");
     //    sleep(1);
     cc1200_cmd(SRX);
-    printf("checkpoint 3\n");
     // get status information
     cc1200_cmd(SNOP);  //refreshes the current status
     printf("INFO: Status:%s\n", get_status_cc1200_str());
@@ -125,7 +121,7 @@ int main(int argc, char *argv[]){
         for(int i =0; i<3; i++){
             signal(SIGALRM, timeout_no_sender);
             alarm(2);  // if in 3 mins no sender with sufficent RSSI is found exit.
-            printf("Setting frequency to %d", rfFreq[i]);
+            printf("Setting frequency to %d\n", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
             int strength = cc1200_reg_read(RSSI1, NULL);
