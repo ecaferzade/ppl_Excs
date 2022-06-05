@@ -196,3 +196,9 @@ void writeAllRegisters(){
 	}
 }
 
+void change_Freq(float freq_array[]){
+    for(int i = 0; i < sizeof(freq_array); i++){
+        
+    }
+}
+

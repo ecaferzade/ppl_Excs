@@ -30,7 +30,7 @@ void setFrequency(int rfFreq){
     int freq1[8]={0};
     int freq2[8]={0};
     int a[24],i;    
-    system ("cls"); 
+    system("cls"); 
     for(i=0;n>0;i++){    
         a[i]=n%2;    
         n=n/2;
