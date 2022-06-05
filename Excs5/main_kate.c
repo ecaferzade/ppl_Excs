@@ -119,9 +119,9 @@ int main(int argc, char *argv[]){
     rfFreq[2]=950;
 
     while(1){
+        signal(SIGALRM, timeout_no_sender);
+        alarm(10);  // if in 3 mins no sender with sufficent RSSI is found exit.
         for(int i =0; i<3; i++){
-            signal(SIGALRM, timeout_no_sender);
-            alarm(10);  // if in 3 mins no sender with sufficent RSSI is found exit.
             printf("Setting frequency to %d\n", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
@@ -137,9 +137,10 @@ int main(int argc, char *argv[]){
                 printf("checkpoint 5\n");
                 printf("while schleife erreicht.");
                 fflush(stdout);
+
+                signal(SIGALRM, timeout_no_packs_from_sender);
+                alarm(120);  // if no packs received in 2 mins from the detected sender exit.
                 while(packet_len < expect_packet_len){
-                    signal(SIGALRM, timeout_no_packs_from_sender);
-                    alarm(120);  // if no packs received in 2 mins from the detected sender exit.
                 /* From the datasheet: "The NUM_RXBYTES register can be polled at a given rate to get
                 information about the number of bytes in the RX FIFO."
                 */
