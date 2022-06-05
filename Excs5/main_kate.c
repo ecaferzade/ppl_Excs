@@ -2,21 +2,24 @@
 #include "SPIv1.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>  // for timeouts
-#include <signal.h>
+#include <unistd.h>  // for timeouts (alarm)
+#include <signal.h>  // for timeouts (signal handler)
 
 void sig_handler(int sig){
     printf("terminating...\n");
     exit(1);
 }
 
-void timeout_no_sender(int sig){
+void timeout_no_sender(int signum){
     printf("No sender received... Exiting...\n");
+    sleep(2);
     exit(1);
 }
 
-void timeout_no_packs_from_sender(int sig){
+void timeout_no_packs_from_sender(int signum){
     printf("No packets received from the sender in the given time... Exiting...\n");
+    sleep(2);
+    exit(1);
 }
 
 int ConvertToDec(int* bits, int size){
@@ -121,7 +124,7 @@ int main(int argc, char *argv[]){
     while(1){
         for(int i =0; i<3; i++){
             signal(SIGALRM, timeout_no_sender);
-            alarm(10);  // if in 3 mins no sender with sufficent RSSI is found exit.
+            alarm(2);  // if in 3 mins no sender with sufficent RSSI is found exit.
             printf("Setting frequency to %d", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
