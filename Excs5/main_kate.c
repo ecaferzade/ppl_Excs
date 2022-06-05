@@ -50,7 +50,7 @@ void setFrequency(int rfFreq){
     for(i=i-1;i>=0;i--){    
         printf("%d",a[i]);
     }
-    print("\n") 
+    printf("\n"); 
     int j =0;
     for(int k=7; k>=0; k--){
         freq0[j]=a[k];
