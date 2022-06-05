@@ -49,24 +49,25 @@ void setFrequency(int rfFreq){
     printf("Binary of Given Number is = ");    
     for(i=i-1;i>=0;i--){    
         printf("%d",a[i]);
-    } 
+    }
+    print("\n") 
     int j =0;
     for(int k=7; k>=0; k--){
         freq0[j]=a[k];
         j++;
-        printf("Freq0: %d\n", a[k]);
+        //printf("Freq0: %d\n", a[k]);
     }
     int l =0;
     for(int k=15; k>=8; k--){
         freq1[l]=a[k];
         l++;
-        printf("Freq1: %d\n", a[k]);
+        //printf("Freq1: %d\n", a[k]);
     }
     int m=0;
     for(int k=23; k>=16; k--){
         freq2[m]=a[k];
         m++;
-        printf("Freq2: %d\n", a[k]);
+        //printf("Freq2: %d\n", a[k]);
 
     }
     int len = (sizeof(freq0) / sizeof(freq0[0])); // get array size
@@ -120,7 +121,7 @@ int main(int argc, char *argv[]){
     while(1){
         for(int i =0; i<3; i++){
             signal(SIGALRM, timeout_no_sender);
-            alarm(2);  // if in 3 mins no sender with sufficent RSSI is found exit.
+            alarm(10);  // if in 3 mins no sender with sufficent RSSI is found exit.
             printf("Setting frequency to %d\n", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
