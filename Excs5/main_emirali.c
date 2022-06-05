@@ -30,7 +30,7 @@ information about the number of bytes in the RX FIFO."
     }
     
     printf("The received message is: "); // after every expected byte arrived:
-    for(int i = 0; i < packet_len; i++){
+    for(int i = 0; i < received_nr_bytes; i++){
         printf("%c", (char) cc1200_reg_read(0x3F, NULL));
     }
 

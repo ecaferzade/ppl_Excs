@@ -1,8 +1,8 @@
 #include "regDefs.h"
-#include <SPIv1.h>
+#include "SPIv1.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <unistd.h>  // for timeouts
 #include <signal.h>
 
 void sig_handler(int sig){
@@ -10,6 +10,14 @@ void sig_handler(int sig){
     exit(1);
 }
 
+void timeout_no_sender(int sig){
+    printf("No sender received... Exiting...\n");
+    exit(1);
+}
+
+void timeout_no_packs_from_sender(int sig){
+    printf("No packets received from the sender in the given time... Exiting...\n");
+}
 
 int ConvertToDec(int* bits, int size){
     int result = 0;
@@ -112,6 +120,8 @@ int main(int argc, char *argv[]){
 
     while(1){
         for(int i =0; i<3; i++){
+            signal(SIGALRM, timeout_no_sender);
+            alarm(180);  // if in 3 mins no sender with sufficent RSSI is found exit.
             printf("Setting frequency to %d", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
@@ -128,6 +138,8 @@ int main(int argc, char *argv[]){
                 printf("while schleife erreicht.");
                 fflush(stdout);
                 while(packet_len < expect_packet_len){
+                    signal(SIGALRM, timeout_no_packs_from_sender);
+                    alarm(120);  // if no packs received in 2 mins from the detected sender exit.
                 /* From the datasheet: "The NUM_RXBYTES register can be polled at a given rate to get
                 information about the number of bytes in the RX FIFO."
                 */
