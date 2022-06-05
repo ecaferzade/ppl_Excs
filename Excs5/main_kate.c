@@ -121,7 +121,7 @@ int main(int argc, char *argv[]){
     while(1){
         for(int i =0; i<3; i++){
             signal(SIGALRM, timeout_no_sender);
-            alarm(180);  // if in 3 mins no sender with sufficent RSSI is found exit.
+            alarm(10);  // if in 3 mins no sender with sufficent RSSI is found exit.
             printf("Setting frequency to %d", rfFreq[i]);
             setFrequency(rfFreq[i]);
             sleep(1);
