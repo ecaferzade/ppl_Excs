@@ -11,7 +11,7 @@ void sig_handler(int sig){
 }
 
 void timeout_no_sender(int signum){
-    printf("No sender received... Exiting...\n");
+    printf("No sender detected... Exiting...\n");
     sleep(2);
     exit(1);
 }
@@ -21,6 +21,17 @@ void timeout_no_packs_from_sender(int signum){
     sleep(2);
     exit(1);
 }
+
+void activate_pre_calibration(int Freq){
+    cc1200_reg_write(SETTLING_CFG, 0x00);  // disable auto calibration by writing to SETTLING_CFG
+    setFrequency(Freq);  // write to FREQ registers
+    cc1200_cmd(SCAL);  // perform SCAL strobe cmd.
+    sleep(1);
+    cc1200_reg_read(FS_CHP, NULL);  // check if calibration succesful by reading the regs.
+    cc1200_reg_read(FS_VCO4, NULL);
+    cc1200_reg_read(FS_VCO2, NULL);
+}
+
 
 int ConvertToDec(int* bits, int size){
     int result = 0;
