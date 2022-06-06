@@ -221,7 +221,6 @@ void setFreq_Emirali(int freq){
     printf("The value saved in freq0 is: %d\n", cc1200_reg_read(FREQ0, NULL));
     printf("The value saved in freq1 is: %d\n", cc1200_reg_read(FREQ1, NULL));
     printf("The value saved in freq2 is: %d\n", cc1200_reg_read(FREQ2, NULL));
-    cc1200_cmd(SRX);
     
 }
 
