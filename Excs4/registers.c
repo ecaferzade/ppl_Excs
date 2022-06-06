@@ -131,6 +131,21 @@ printf("The value saved in freq2 is: %d\n", val2);
 }
 
 
+void setFreq_Emirali(int freq){
+    printf("\n\nSetting frequency to %d\n", freq);
+    cc1200_reg_write(FREQ0, NULL);
+    cc1200_reg_write(FREQ1, NULL);
+    switch(freq){
+        case 820: cc1200_reg_write(FREQ2, 0x52); break;
+        case 850: cc1200_reg_write(FREQ2, 0x55); break;
+        case 950: cc1200_reg_write(FREQ2, 0x5f); break;
+    }
+    sleep(1);
+    printf("The value saved in freq0 is: %d\n", cc1200_reg_read(FREQ0, NULL));
+    printf("The value saved in freq1 is: %d\n", cc1200_reg_read(FREQ1, NULL));
+    printf("The value saved in freq2 is: %d\n", cc1200_reg_read(FREQ2, NULL));
+    
+}
 
 
 
@@ -365,7 +380,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
   }
   
   int freq=850;
-  setFrequency(freq);  
+  setFreq_Emirali(freq);  
   
   //while(1){
    //RFEND_CFG0 needs to be programmed 
