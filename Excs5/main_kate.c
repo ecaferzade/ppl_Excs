@@ -145,7 +145,7 @@ int main(int argc, char *argv[]){
 
     while(1){
         for(int i =0; i<3; i++){
-            setFrequency(rfFreq[i])
+            setFrequency(rfFreq[i]);
             //setFreq_Emirali(rfFreq[i]);
             sleep(1);
             int signal_strength = cc1200_reg_read(RSSI1, NULL);
