@@ -117,6 +117,7 @@ void setFreq_Emirali(int freq){
     }
     sleep(1);
     printf("The value saved in freq2 is: %d\n", cc1200_reg_read(FREQ2, NULL));
+    cc1200_cmd(SRX);
     
 }
 
@@ -145,8 +146,8 @@ int main(int argc, char *argv[]){
 
     while(1){
         for(int i =0; i<3; i++){
-            setFrequency(rfFreq[i]);
-            //setFreq_Emirali(rfFreq[i]);
+            //setFrequency(rfFreq[i]);
+            setFreq_Emirali(rfFreq[i]);
             sleep(1);
             int signal_strength = cc1200_reg_read(RSSI1, NULL);
             printf("RSSI value: %d \n", signal_strength);
