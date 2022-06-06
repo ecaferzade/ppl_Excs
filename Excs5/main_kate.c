@@ -115,7 +115,7 @@ void setFreq_Emirali(int rfFreq){
         case 950: cc1200_reg_write(FREQ2, 0x5f);
     }
     sleep(1);
-    printf("The value saved in freq2 is: %d\n", val2);
+    printf("The value saved in freq2 is: %d\n", cc1200_reg_read(FREQ2, NULL));
     
 }
 
