@@ -385,7 +385,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     printf("Transmitting string\n");
 
     cc1200_reg_write(0x3F, PKT_CFG0);
-
+    while(1){
     for(int i=0; i<bytes; i++){
 
     cc1200_reg_write(0x3F, c[i]);
@@ -396,7 +396,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     sleep(1);
     
     printf("String transmitted\n");
-
+    }
     
   //}
   
