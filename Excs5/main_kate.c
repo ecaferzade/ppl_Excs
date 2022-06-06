@@ -114,6 +114,8 @@ void setFreq_Emirali(int rfFreq){
         case 850: cc1200_reg_write(FREQ2, 0x55);
         case 950: cc1200_reg_write(FREQ2, 0x5f);
     }
+    sleep(1);
+    printf("The value saved in freq2 is: %d\n", val2);
     
 }
 
@@ -147,10 +149,10 @@ int main(int argc, char *argv[]){
             printf("Setting frequency to %d\n", rfFreq[i]);
             setFreq_Emirali(rfFreq[i]);
             sleep(1);
-            int strength = cc1200_reg_read(RSSI1, NULL);
-            printf("RSSI value: %d \n", strength);
+            int signal_strength = cc1200_reg_read(RSSI1, NULL);
+            printf("RSSI value: %d \n", signal_strength);
             sleep(3);
-            if(strength <= 76){
+            if(signal_strength <= 76){
                 printf("RSSI threshold exceeded. \n");
                 sleep(3);
                 int packet_len = 0;
