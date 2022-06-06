@@ -149,9 +149,9 @@ typedef struct {
 REG_TYPE RegSettings[MAX_REG] =
 {
     {IOCFG3         , 0x06 }, // GPIO3 IO Pin Configuration
-    {IOCFG2         , 0x06 }, // GPIO2 IO Pin Configuration
+    {IOCFG2         , 0x08 }, // GPIO2 IO Pin Configuration
     {IOCFG1         , 0x30 }, // GPIO1 IO Pin Configuration
-    {IOCFG0         , 0x3c }, // GPIO0 IO Pin Configuration
+    {IOCFG0         , 0x09 }, // GPIO0 IO Pin Configuration
     {SYNC3          , 0x93 }, // Sync Word Configuration [31:24]
     {SYNC2          , 0x0b }, // Sync Word Configuration [23:16]
     {SYNC1          , 0x51 }, // Sync Word Configuration [15:8]
@@ -161,13 +161,13 @@ REG_TYPE RegSettings[MAX_REG] =
     {DEVIATION_M    , 0x06 }, // Frequency Deviation Configuration
     {MODCFG_DEV_E   , 0x0b }, // Modulation Format and Frequency Deviation Configur..
     {DCFILT_CFG     , 0x4c }, // Digital DC Removal Configuration
-    {PREAMBLE_CFG1  , 0x14 }, // Preamble Length Configuration Reg. 1 (reset);
+    {PREAMBLE_CFG1  , 0x01 }, // Preamble Length Configuration Reg. 1 (reset);
     {PREAMBLE_CFG0  , 0x8a }, // Preamble Detection Configuration Reg. 0
     {IQIC           , 0xc8 }, // Digital Image Channel Compensation Configuration
     {CHAN_BW        , 0x10 }, // Channel Filter Configuration
-    {MDMCFG1        , 0x42 }, // General Modem Parameter Configuration Reg. 1
+    {MDMCFG1        , 0x06 }, // General Modem Parameter Configuration Reg. 1
     {MDMCFG0        , 0x05 }, // General Modem Parameter Configuration Reg. 0
-    {SYMBOL_RATE2   , 0x8f }, // Symbol Rate Configuration Exponent and Mantissa [1..
+    {SYMBOL_RATE2   , 0x3f }, // Symbol Rate Configuration Exponent and Mantissa [1..
     {SYMBOL_RATE1   , 0x75 }, // Symbol Rate Configuration Mantissa [15:8]
     {SYMBOL_RATE0   , 0x10 }, // Symbol Rate Configuration Mantissa [7:0]
     {AGC_REF        , 0x27 }, // AGC Reference Level Configuration
@@ -186,15 +186,15 @@ REG_TYPE RegSettings[MAX_REG] =
     {WOR_EVENT0_MSB , 0x00 }, // Event 0 Configuration MSB
     {WOR_EVENT0_LSB , 0x00 }, // Event 0 Configuration LSB
     {RXDCM_TIME     , 0x00 }, // RX Duty Cycle Mode Configuration
-    {PKT_CFG2       , 0x00 }, // Packet Configuration Reg. 2 (on reset)
-    {PKT_CFG1       , 0x03 }, // Packet Configuration Reg. 1 (on reset)
-    {PKT_CFG0       , 0x00 }, // Packet Configuration Reg. 0 (on reset)
+    {PKT_CFG2       , 0x01 }, // Packet Configuration Reg. 2 (on reset)
+    {PKT_CFG1       , 0x00 }, // Packet Configuration Reg. 1 (on reset)
+    {PKT_CFG0       , 0x20 }, // Packet Configuration Reg. 0 (on reset)
     {RFEND_CFG1     , 0x0f }, // RFEND Configuration Reg. 1
     {RFEND_CFG0     , 0x00 }, // RFEND Configuration Reg. 0
     {PA_CFG1        , 0x7f }, // Power Amplifier Configuration Reg. 1
     {PA_CFG0        , 0x56 }, // Power Amplifier Configuration Reg. 0
     {ASK_CFG        , 0x0f }, // ASK Configuration
-    {PKT_LEN        , 0x0a }  // Packet Length Configuration
+    {PKT_LEN        , 0xff }  // Packet Length Configuration
 };
 
 REG_TYPE ExtRegSettings[MAX_EXT_REG] =
@@ -211,9 +211,9 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {RCCAL_OFFSET    , 0x00 },  // RC Oscillator Calibration Clock Offset
     {FREQOFF1        , 0x00 },  // Frequency Offset MSB
     {FREQOFF0        , 0x00 },  // Frequency Offset LSB
-    {FREQ2           , 0x56 },  // Frequency Configuration [23:16]
-    {FREQ1           , 0xcc },  // Frequency Configuration [15:8]
-    {FREQ0           , 0xcc },  // Frequency Configuration [7:0]
+    {FREQ2           , 0x55 },  // Frequency Configuration [23:16]
+    {FREQ1           , 0x00 },  // Frequency Configuration [15:8]
+    {FREQ0           , 0x00 },  // Frequency Configuration [7:0]
     {IF_ADC2         , 0x02 },  // Analog to Digital Converter Configuration Reg. 2
     {IF_ADC1         , 0xee },  // Analog to Digital Converter Configuration Reg. 1
     {IF_ADC0         , 0x10 },  // Analog to Digital Converter Configuration Reg. 0
@@ -302,7 +302,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {PHASE_ADJUST    , 0x00 },  // Frequency Synthesizer Phase Adjust
     {PARTNUMBER      , 0x20 },  // Part Number
     {PARTVERSION     , 0x11 },  // Part Revision
-    {SERIAL_STATUS   , 0x00 },  // Serial Status
+    {SERIAL_STATUS   , 0x08 },  // Serial Status
     {MODEM_STATUS1   , 0x10 },  // Modem Status Reg. 1
     {MODEM_STATUS0   , 0x00 },  // Modem Status Reg. 0
     {MARC_STATUS1    , 0x00 },  // MARC Status Reg. 1
@@ -330,7 +330,6 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {FIFO_NUM_RXBYTES, 0x00 },  //:RX FIFO Status
     {RXFIFO_PRE_BUF  , 0x00 }  // RX FIFO Status
 };
-
 
 
 
@@ -391,9 +390,9 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     cc1200_reg_write(0x3F, c[i]);
     }
     
-    sleep(1);
+    sleep(0.05);
     cc1200_cmd(STX);
-    sleep(1);
+    sleep(0.05);
     
     printf("String transmitted\n");
     }

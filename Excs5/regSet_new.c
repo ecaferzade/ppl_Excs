@@ -22,7 +22,7 @@ REG_TYPE RegSettings[MAX_REG] =
     {CHAN_BW        , 0x10 }, // Channel Filter Configuration
     {MDMCFG1        , 0x02 }, // General Modem Parameter Configuration Reg. 1
     {MDMCFG0        , 0x05 }, // General Modem Parameter Configuration Reg. 0
-    {SYMBOL_RATE2   , 0x8f }, // Symbol Rate Configuration Exponent and Mantissa [1..
+    {SYMBOL_RATE2   , 0x3f }, // Symbol Rate Configuration Exponent and Mantissa [1..
     {SYMBOL_RATE1   , 0x75 }, // Symbol Rate Configuration Mantissa [15:8]
     {SYMBOL_RATE0   , 0x10 }, // Symbol Rate Configuration Mantissa [7:0]
     {AGC_REF        , 0x27 }, // AGC Reference Level Configuration
@@ -66,7 +66,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {RCCAL_OFFSET    , 0x00 },  // RC Oscillator Calibration Clock Offset
     {FREQOFF1        , 0x00 },  // Frequency Offset MSB
     {FREQOFF0        , 0x00 },  // Frequency Offset LSB
-    {FREQ2           , 0x52 },  // Frequency Configuration [23:16]
+    {FREQ2           , 0x55 },  // Frequency Configuration [23:16]
     {FREQ1           , 0x00 },  // Frequency Configuration [15:8]
     {FREQ0           , 0x00 },  // Frequency Configuration [7:0]
     {IF_ADC2         , 0x02 },  // Analog to Digital Converter Configuration Reg. 2
@@ -185,6 +185,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {FIFO_NUM_RXBYTES, 0x00 },  //:RX FIFO Status
     {RXFIFO_PRE_BUF  , 0x00 }  // RX FIFO Status
 };
+
 
 
 
