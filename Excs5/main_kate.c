@@ -52,6 +52,107 @@ void setFrequency(int rfFreq){
     int freq1[8]={0};
     int freq2[8]={0};
     int a[24],i;    
+    system ("cls"); 
+    for(i=0;n>0;i++){    
+        a[i]=n%2;    
+        n=n/2;    
+            } 
+
+
+    printf("\nBinary of Given Number is=");    
+        for(i=i-1;i>=0;i--)   
+
+    {    
+        printf("%d",a[i]);    
+                } 
+
+
+
+    int j =0;
+    for(int k=7; k>=0; k--){
+        
+        freq0[j]=a[k];
+        j++;
+        printf("Freq0: %d\n", a[k]);
+                            }
+
+
+
+
+
+    int l =0;
+    for(int k=15; k>=8; k--){
+
+    freq1[l]=a[k];
+    l++;
+    printf("Freq1: %d\n", a[k]);
+    }
+
+
+
+
+
+
+    int m=0;
+    for(int k=23; k>=16; k--){
+    int check = a[k];
+    if(a[k]!=-1){
+
+    freq2[m]=a[k];}
+
+    else
+    { freq2[m]=0;
+    }
+    m++;
+    printf("Freq2: %d\n", a[k]);
+
+    }
+
+
+
+    int len = (sizeof(freq0) / sizeof(freq0[0])); // get array size
+    int result0 = ConvertToDec(freq0, len);
+
+    int result1 = ConvertToDec(freq1, len);
+
+    int result2 = ConvertToDec(freq2, len);
+
+    char hex[5];
+    sprintf(hex, "0x%02X", result0);
+    printf("The hex frequency is: %s\n", hex);
+
+    int adr0 = 0x2F0E;
+    int adr1 = 0x2F0D;
+    int adr2 = 0x2F0C;
+    int val0=0;
+    int val1=0;
+    int val2=0;
+
+    cc1200_reg_write(adr0, result0);
+    cc1200_reg_write(adr1, result1);
+    cc1200_reg_write(adr2, result2);
+
+
+    printf("Reading the set frequency...\n");
+
+    cc1200_reg_read(adr0, &val0);
+    cc1200_reg_read(adr1, &val1);
+    cc1200_reg_read(adr2, &val2);
+    printf("The value saved in freq0 is: %d\n", val0);
+    printf("The value saved in freq1 is: %d\n", val1);
+    printf("The value saved in freq2 is: %d\n", val2);
+
+}
+
+
+/*
+void setFrequency(int rfFreq){
+    int constant = 6553.6;
+    int n = constant*rfFreq;
+    int freq0[8]={0};
+    int freq1[8]={0};
+    int freq2[8]={0};
+    int a[24],i;    
     system("cls"); 
     for(i=0;n>0;i++){    
         a[i]=n%2;    
@@ -105,6 +206,7 @@ void setFrequency(int rfFreq){
     printf("The value saved in freq1 is: %d\n", val1);
     printf("The value saved in freq2 is: %d\n", val2);
 }
+*/
 
 void setFreq_Emirali(int freq){
     printf("\n\nSetting frequency to %d\n", freq);
@@ -146,8 +248,8 @@ int main(int argc, char *argv[]){
 
     while(1){
         for(int i =0; i<3; i++){
-            //setFrequency(rfFreq[i]);
-            setFreq_Emirali(rfFreq[i]);
+            setFrequency(rfFreq[i]);
+            //setFreq_Emirali(rfFreq[i]);
             sleep(1);
             int signal_strength = cc1200_reg_read(RSSI1, NULL);
             printf("RSSI value: %d \n", signal_strength);
