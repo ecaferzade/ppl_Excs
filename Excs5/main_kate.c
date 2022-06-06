@@ -242,7 +242,7 @@ int main(int argc, char *argv[]){
     printf("INFO: Status:%s\n", get_status_cc1200_str());
     
     signal(SIGALRM, timeout_no_sender);
-    alarm(360);  // if in 3 mins no sender with sufficent RSSI is found exit.
+    alarm(30);  // if in 3 mins no sender with sufficent RSSI is found exit.
 
     int rfFreq[3] = {820, 850, 950};
 
@@ -265,7 +265,7 @@ int main(int argc, char *argv[]){
                 fflush(stdout);
 
                 signal(SIGALRM, timeout_no_packs_from_sender);
-                alarm(360);  // if no packs received in 2 mins from the detected sender exit.
+                alarm(30);  // if no packs received in 2 mins from the detected sender exit.
                 while(packet_len < expect_packet_len){
                 /* From the datasheet: "The NUM_RXBYTES register can be polled at a given rate to get
                 information about the number of bytes in the RX FIFO."
