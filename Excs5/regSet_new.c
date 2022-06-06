@@ -4,31 +4,31 @@
 REG_TYPE RegSettings[MAX_REG] =
 {
     {IOCFG3         , 0x06 }, // GPIO3 IO Pin Configuration
-    {IOCFG2         , 0x06 }, // GPIO2 IO Pin Configuration
+    {IOCFG2         , 0x08 }, // GPIO2 IO Pin Configuration
     {IOCFG1         , 0x30 }, // GPIO1 IO Pin Configuration
-    {IOCFG0         , 0x3c }, // GPIO0 IO Pin Configuration
+    {IOCFG0         , 0x09 }, // GPIO0 IO Pin Configuration
     {SYNC3          , 0x93 }, // Sync Word Configuration [31:24]
     {SYNC2          , 0x0b }, // Sync Word Configuration [23:16]
     {SYNC1          , 0x51 }, // Sync Word Configuration [15:8]
     {SYNC0          , 0xde }, // Sync Word Configuration [7:0]
-    {SYNC_CFG1      , 0xa9 }, // Sync Word Detection Configuration Reg. 1
+    {SYNC_CFG1      , 0xbf }, // Sync Word Detection Configuration Reg. 1
     {SYNC_CFG0      , 0x03 }, // Sync Word Detection Configuration Reg. 0
     {DEVIATION_M    , 0x06 }, // Frequency Deviation Configuration
     {MODCFG_DEV_E   , 0x0b }, // Modulation Format and Frequency Deviation Configur..
     {DCFILT_CFG     , 0x4c }, // Digital DC Removal Configuration
-    {PREAMBLE_CFG1  , 0x14 }, // Preamble Length Configuration Reg. 1 (reset);
+    {PREAMBLE_CFG1  , 0x01 }, // Preamble Length Configuration Reg. 1 (reset);
     {PREAMBLE_CFG0  , 0x8a }, // Preamble Detection Configuration Reg. 0
     {IQIC           , 0xc8 }, // Digital Image Channel Compensation Configuration
     {CHAN_BW        , 0x10 }, // Channel Filter Configuration
-    {MDMCFG1        , 0x42 }, // General Modem Parameter Configuration Reg. 1
+    {MDMCFG1        , 0x02 }, // General Modem Parameter Configuration Reg. 1
     {MDMCFG0        , 0x05 }, // General Modem Parameter Configuration Reg. 0
     {SYMBOL_RATE2   , 0x8f }, // Symbol Rate Configuration Exponent and Mantissa [1..
     {SYMBOL_RATE1   , 0x75 }, // Symbol Rate Configuration Mantissa [15:8]
     {SYMBOL_RATE0   , 0x10 }, // Symbol Rate Configuration Mantissa [7:0]
     {AGC_REF        , 0x27 }, // AGC Reference Level Configuration
     {AGC_CS_THR     , 0xee }, // Carrier Sense Threshold Configuration
-    {AGC_GAIN_ADJUST, 0x00 }, // RSSI Offset Configuration
-    {AGC_CFG3       , 0xb1 }, // Automatic Gain Control Configuration Reg. 3
+    {AGC_GAIN_ADJUST, 0x30 }, // RSSI Offset Configuration
+    {AGC_CFG3       , 0x11 }, // Automatic Gain Control Configuration Reg. 3
     {AGC_CFG2       , 0x20 }, // Automatic Gain Control Configuration Reg. 2
     {AGC_CFG1       , 0x11 }, // Automatic Gain Control Configuration Reg. 1
     {AGC_CFG0       , 0x94 }, // Automatic Gain Control Configuration Reg. 0
@@ -41,21 +41,21 @@ REG_TYPE RegSettings[MAX_REG] =
     {WOR_EVENT0_MSB , 0x00 }, // Event 0 Configuration MSB
     {WOR_EVENT0_LSB , 0x00 }, // Event 0 Configuration LSB
     {RXDCM_TIME     , 0x00 }, // RX Duty Cycle Mode Configuration
-    {PKT_CFG2       , 0x00 }, // Packet Configuration Reg. 2 (on reset)
-    {PKT_CFG1       , 0x03 }, // Packet Configuration Reg. 1 (on reset)
-    {PKT_CFG0       , 0x00 }, // Packet Configuration Reg. 0 (on reset)
+    {PKT_CFG2       , 0x01 }, // Packet Configuration Reg. 2 (on reset)
+    {PKT_CFG1       , 0x00 }, // Packet Configuration Reg. 1 (on reset)
+    {PKT_CFG0       , 0x20 }, // Packet Configuration Reg. 0 (on reset)
     {RFEND_CFG1     , 0x0f }, // RFEND Configuration Reg. 1
     {RFEND_CFG0     , 0x00 }, // RFEND Configuration Reg. 0
     {PA_CFG1        , 0x7f }, // Power Amplifier Configuration Reg. 1
     {PA_CFG0        , 0x56 }, // Power Amplifier Configuration Reg. 0
     {ASK_CFG        , 0x0f }, // ASK Configuration
-    {PKT_LEN        , 0x0a }  // Packet Length Configuration
+    {PKT_LEN        , 0xff }  // Packet Length Configuration
 };
 
 REG_TYPE ExtRegSettings[MAX_EXT_REG] =
 {
     {IF_MIX_CFG      , 0x1c },  // IF Mix Configuration
-    {FREQOFF_CFG     , 0x20 },  // Frequency Offset Correction Configuration (on Reset)
+    {FREQOFF_CFG     , 0x22 },  // Frequency Offset Correction Configuration (on Reset)
     {TOC_CFG         , 0x03 },  // Timing Offset Correction Configuration (reset value)
     {MARC_SPARE      , 0x00 },  // MARC Spare
     {ECG_CFG         , 0x00 },  // External Clock Frequency Configuration
@@ -66,7 +66,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {RCCAL_OFFSET    , 0x00 },  // RC Oscillator Calibration Clock Offset
     {FREQOFF1        , 0x00 },  // Frequency Offset MSB
     {FREQOFF0        , 0x00 },  // Frequency Offset LSB
-    {FREQ2           , 0x52 },  // Frequency Configuration [23:16]
+    {FREQ2           , 0x55 },  // Frequency Configuration [23:16]
     {FREQ1           , 0x00 },  // Frequency Configuration [15:8]
     {FREQ0           , 0x00 },  // Frequency Configuration [7:0]
     {IF_ADC2         , 0x02 },  // Analog to Digital Converter Configuration Reg. 2
@@ -78,7 +78,7 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {FS_CAL2         , 0x20 },  // Frequency Synthesizer Calibration Reg. 2
     {FS_CAL1         , 0x40 },  // Frequency Synthesizer Calibration Reg. 1
     {FS_CAL0         , 0x0e },  // Frequency Synthesizer Calibration Reg. 0
-    {FS_CHP          , 0x28 },  // Frequency Synthesizer Charge Pump Configuration
+    {FS_CHP          , 0x2b },  // Frequency Synthesizer Charge Pump Configuration
     {FS_DIVTWO       , 0x03 },  // Frequency Synthesizer Divide by 2
     {FS_DSM1         , 0x00 },  // FS Digital Synthesizer Module Configuration Reg. 1
     {FS_DSM0         , 0x33 },  // FS Digital Synthesizer Module Configuration Reg. 0
@@ -89,10 +89,10 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {FS_PRE          , 0x6e },  // Frequency Synthesizer Prescaler Configuration
     {FS_REG_DIV_CML  , 0x1c },  // Frequency Synthesizer Divider Regulator Configurat..
     {FS_SPARE        , 0xac },  // Frequency Synthesizer Spare
-    {FS_VCO4         , 0x14 },  // FS Voltage Controlled Oscillator Configuration Reg..
+    {FS_VCO4         , 0x18 },  // FS Voltage Controlled Oscillator Configuration Reg..
     {FS_VCO3         , 0x00 },  // FS Voltage Controlled Oscillator Configuration Reg..
-    {FS_VCO2         , 0x00 },  // FS Voltage Controlled Oscillator Configuration Reg..
-    {FS_VCO1         , 0x00 },  // FS Voltage Controlled Oscillator Configuration Reg..
+    {FS_VCO2         , 0x48 },  // FS Voltage Controlled Oscillator Configuration Reg..
+    {FS_VCO1         , 0x9c },  // FS Voltage Controlled Oscillator Configuration Reg..
     {FS_VCO0         , 0xb5 },  // FS Voltage Controlled Oscillator Configuration Reg..
     {GBIAS6          , 0x00 },  // Global Bias Configuration Reg. 6
     {GBIAS5          , 0x02 },  // Global Bias Configuration Reg. 5
@@ -125,15 +125,15 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {IQIE_I0         , 0x00 },  // IQ Imbalance Value I LSB
     {IQIE_Q1         , 0x00 },  // IQ Imbalance Value Q MSB
     {IQIE_Q0         , 0x00 },  // IQ Imbalance Value Q LSB
-    {RSSI1           , 0x80 },  // Received Signal Strength Indicator Reg. 1
-    {RSSI0           , 0x00 },  // Received Signal Strength Indicator Reg.0
+    {RSSI1           , 0x0e },  // Received Signal Strength Indicator Reg. 1
+    {RSSI0           , 0x47 },  // Received Signal Strength Indicator Reg.0
     {MARCSTATE       , 0x41 },  // MARC State
-    {LQI_VAL         , 0x00 },  // Link Quality Indicator Value
-    {PQT_SYNC_ERR    , 0xff },  // Preamble and Sync Word Error
-    {DEM_STATUS      , 0x00 },  // Demodulator Status
+    {LQI_VAL         , 0x97 },  // Link Quality Indicator Value
+    {PQT_SYNC_ERR    , 0xf8 },  // Preamble and Sync Word Error
+    {DEM_STATUS      , 0x10 },  // Demodulator Status
     {FREQOFF_EST1    , 0x00 },  // Frequency Offset Estimate MSB
-    {FREQOFF_EST0    , 0x00 },  // Frequency Offset Estimate LSB
-    {AGC_GAIN3       , 0x00 },  // Automatic Gain Control Reg. 3
+    {FREQOFF_EST0    , 0x62 },  // Frequency Offset Estimate LSB
+    {AGC_GAIN3       , 0x27 },  // Automatic Gain Control Reg. 3
     {AGC_GAIN2       , 0xd1 },  // Automatic Gain Control Reg. 2
     {AGC_GAIN1       , 0x00 },  // Automatic Gain Control Reg. 1
     {AGC_GAIN0       , 0x3f },  // Automatic Gain Control Reg. 0
@@ -143,9 +143,9 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {RNDGEN          , 0x7f },  // Random Number Generator Value
     {MAGN2           , 0x00 },  // Signal Magnitude after CORDIC [16]
     {MAGN1           , 0x00 },  // Signal Magnitude after CORDIC [15:8]
-    {MAGN0           , 0x00 },  // Signal Magnitude after CORDIC [7:0]
-    {ANG1            , 0x00 },  // Signal Angular after CORDIC [9:8]
-    {ANG0            , 0x00 },  // Signal Angular after CORDIC [7:0]
+    {MAGN0           , 0x0c },  // Signal Magnitude after CORDIC [7:0]
+    {ANG1            , 0x02 },  // Signal Angular after CORDIC [9:8]
+    {ANG0            , 0x7c },  // Signal Angular after CORDIC [7:0]
     {CHFILT_I2       , 0x02 },  // Channel Filter Data Real Part [16]
     {CHFILT_I1       , 0x00 },  // Channel Filter Data Real Part [15:8]
     {CHFILT_I0       , 0x00 },  // Channel Filter Data Real Part [7:0]
@@ -157,8 +157,8 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {PHASE_ADJUST    , 0x00 },  // Frequency Synthesizer Phase Adjust
     {PARTNUMBER      , 0x20 },  // Part Number
     {PARTVERSION     , 0x11 },  // Part Revision
-    {SERIAL_STATUS   , 0x00 },  // Serial Status
-    {MODEM_STATUS1   , 0x10 },  // Modem Status Reg. 1
+    {SERIAL_STATUS   , 0x08 },  // Serial Status
+    {MODEM_STATUS1   , 0x91 },  // Modem Status Reg. 1
     {MODEM_STATUS0   , 0x00 },  // Modem Status Reg. 0
     {MARC_STATUS1    , 0x00 },  // MARC Status Reg. 1
     {MARC_STATUS0    , 0x00 },  // MARC Status Reg. 0
@@ -185,20 +185,3 @@ REG_TYPE ExtRegSettings[MAX_EXT_REG] =
     {FIFO_NUM_RXBYTES, 0x00 },  //:RX FIFO Status
     {RXFIFO_PRE_BUF  , 0x00 }  // RX FIFO Status
 };
-
-void writeAllRegisters(){
-	for(int i = 0; i < MAX_REG; i++){
-		cc1200_reg_write(RegSettings[i].adr, RegSettings[i].val);
-
-	}
-	for(int i = 0; i < MAX_EXT_REG; i++){
-		cc1200_reg_write(ExtRegSettings[i].adr, ExtRegSettings[i].val);
-	}
-}
-
-void change_Freq(float freq_array[]){
-    for(int i = 0; i < sizeof(freq_array); i++){
-        
-    }
-}
-
