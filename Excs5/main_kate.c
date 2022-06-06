@@ -108,8 +108,8 @@ void setFrequency(int rfFreq){
 
 void setFreq_Emirali(int freq){
     printf("\n\nSetting frequency to %d\n", freq);
-    cc1200_reg_write(FREQ0, 0x00);
-    cc1200_reg_write(FREQ1, 0x00);
+    cc1200_reg_write(FREQ0, NULL);
+    cc1200_reg_write(FREQ1, NULL);
     switch(freq){
         case 820: cc1200_reg_write(FREQ2, 0x52); break;
         case 850: cc1200_reg_write(FREQ2, 0x55); break;
