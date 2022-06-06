@@ -146,12 +146,12 @@ int main(int argc, char *argv[]){
     while(1){
         for(int i =0; i<3; i++){
             //setFrequency(rfFreq[i]);
-            //setFreq_Emirali(rfFreq[i]);
+            setFreq_Emirali(rfFreq[i]);
             sleep(1);
             int signal_strength = cc1200_reg_read(RSSI1, NULL);
             printf("RSSI value: %d \n", signal_strength);
             sleep(3);
-            if(signal_strength <= 76){
+            if(signal_strength > 120){
                 printf("RSSI threshold exceeded. \n");
                 sleep(3);
                 int packet_len = 0;
@@ -178,7 +178,7 @@ int main(int argc, char *argv[]){
                 break;
             }
             else{
-                printf("RSSI is above threshold. \n");
+                printf("RSSI is below threshold. \n");
             }
         }
     }
