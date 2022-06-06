@@ -111,9 +111,9 @@ void setFreq_Emirali(int freq){
     cc1200_reg_write(FREQ0, 0x00);
     cc1200_reg_write(FREQ1, 0x00);
     switch(freq){
-        case 820: cc1200_reg_write(FREQ2, 0x52);
-        case 850: cc1200_reg_write(FREQ2, 0x55);
-        case 950: cc1200_reg_write(FREQ2, 0x5f);
+        case 820: cc1200_reg_write(FREQ2, 0x52); break;
+        case 850: cc1200_reg_write(FREQ2, 0x55); break;
+        case 950: cc1200_reg_write(FREQ2, 0x5f); break;
     }
     sleep(1);
     printf("The value saved in freq2 is: %d\n", cc1200_reg_read(FREQ2, NULL));
