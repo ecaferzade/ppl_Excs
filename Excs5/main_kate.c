@@ -106,6 +106,17 @@ void setFrequency(int rfFreq){
     printf("The value saved in freq2 is: %d\n", val2);
 }
 
+void setFreq_Emirali(int rfFreq){
+    cc1200_reg_write(FREQ0, 0x00);
+    cc1200_reg_write(FREQ1, 0x00);
+    switch(rfFreq){
+        case 820: cc1200_reg_write(FREQ2, 0x52);
+        case 850: cc1200_reg_write(FREQ2, 0x55);
+        case 950: cc1200_reg_write(FREQ2, 0x5f);
+    }
+    
+}
+
 
 int main(int argc, char *argv[]){
 
@@ -134,7 +145,7 @@ int main(int argc, char *argv[]){
         alarm(360);  // if in 3 mins no sender with sufficent RSSI is found exit.
         for(int i =0; i<3; i++){
             printf("Setting frequency to %d\n", rfFreq[i]);
-            setFrequency(rfFreq[i]);
+            setFreq_Emirali(rfFreq[i]);
             sleep(1);
             int strength = cc1200_reg_read(RSSI1, NULL);
             printf("RSSI value: %d \n", strength);
